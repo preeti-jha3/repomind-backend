@@ -13,7 +13,7 @@ const PORT = process.env.PORT || 5000;
 // ---- CORS CONFIG ----
 const allowedOrigins = [
   'http://localhost:3000',
-  'https://your-frontend-domain.vercel.app' // yahan apna actual Vercel URL daal dena deploy ke baad
+  'https://repomind-frontend-smoky.vercel.app'
 ];
 
 app.use(cors({
