@@ -10,7 +10,23 @@ const cors = require('cors');
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-app.use(cors());
+// ---- CORS CONFIG ----
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://your-frontend-domain.vercel.app' // yahan apna actual Vercel URL daal dena deploy ke baad
+];
+
+app.use(cors({
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true
+}));
+
 app.use(express.json());
 
 const pool = new Pool({
